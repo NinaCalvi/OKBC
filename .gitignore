@@ -115,3 +115,4 @@ data/data.zip
 data/fb15k/*
 data/yago/*
 *.swp
+data/*
