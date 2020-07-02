@@ -9,7 +9,7 @@ import sys
 import copy
 import sklearn.preprocessing
 
-MODEL_TYPE = '../dumps/fb15k237'
+MODEL_TYPE = '../../'
 
 
 def normalize(X):
@@ -17,7 +17,7 @@ def normalize(X):
 
 
 dump = {}
-with open(MODEL_TYPE+'_distmult_dump.pkl', "rb") as f:
+with open(MODEL_TYPE+'dump2.pkl', "rb") as f:
     dump = pickle.load(f)
 
 
