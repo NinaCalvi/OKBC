@@ -9,7 +9,7 @@ import sys
 import copy
 import sklearn.preprocessing
 
-MODEL_TYPE = '../../'
+MODEL_TYPE = '/home/acalvi/Dissertation/'
 
 
 def normalize(X):
