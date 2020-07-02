@@ -17,7 +17,7 @@ def normalize(X):
 
 
 dump = {}
-with open(MODEL_TYPE+'dump2.pkl', "rb") as f:
+with open(MODEL_TYPE+'dump2.pickle', "rb") as f:
     dump = pickle.load(f)
 
 
