@@ -156,12 +156,9 @@ class DM():
         return [self.dump['rel.weight'][r]]
 
 
-
-
-
 class TriVec():
 
-    def init(self, pickle_dump_file):
+    def __init__(self, pickle_dump_file):
         with open(pickle_dump_file, "rb") as f:
             self.dump = pickle.load(f)
 
@@ -182,6 +179,13 @@ class TriVec():
     def get_relation_similarity(self, r1, r2):
         return self.relation_similarity[r1,r2]
 
+
+    def get_entity_similarity_list(self,e1,lis):
+        return np.take(self.entity_similarity[e1], lis)
+
+    def get_relation_similarity_list(self,r1,lis):
+        return np.take(self.relation_similarity[r1], lis)
+
     def compute_score(self, e1, r, e2):
 
         s = self.dump['ents'][e1]
@@ -198,6 +202,35 @@ class TriVec():
 
         score = np.sum(em_interaction)
         return utils.sigmoid(score)
+
+    def get_hadamard_product(self,r1,r2):
+        v1 = self.dump['rels'][r1]
+        v2 = self.dump['rels'][r2]
+        relation_product =  (v1 * v2)
+        if(np.linalg.norm(relation_product)!=0):
+            relation_product /= np.linalg.norm(relation_product)
+
+        return [relation_product]
+
+    def get_relation_similarity_from_embedding(self,r1_emb, r2_emb):
+        sim = 1.0
+        for i,j in zip(r1_emb, r2_emb):
+            sim = sim*np.dot(i,j)
+        #if(sim>=0):
+        #    return pow(sim,1/3)
+        #return -pow(-sim,1/3)
+        return (sim)
+
+    def get_relation_embedding(self,r):
+        return [self.dump['rels'][r]]
+
+
+
+
+
+
+
+
 
 
 
