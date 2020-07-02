@@ -177,14 +177,14 @@ class TriVec():
         return self.entity_similarity[e1,e2]
 
     def get_relation_similarity(self, r1, r2):
-        return self.relation_similarity[r1,r2]
+        return self.rel_similarity[r1,r2]
 
 
     def get_entity_similarity_list(self,e1,lis):
         return np.take(self.entity_similarity[e1], lis)
 
     def get_relation_similarity_list(self,r1,lis):
-        return np.take(self.relation_similarity[r1], lis)
+        return np.take(self.rel_similarity[r1], lis)
 
     def compute_score(self, e1, r, e2):
 
