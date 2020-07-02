@@ -25,7 +25,7 @@ def template_obj_builder(dataset_root, model_weight_file, template_load_dir, tem
     elif(model_type == "complex"):
         base_model = models.TypedComplex(model_weight_file)
     elif(model_type == 'trivec'):
-        base_model = model.TriVec(model_weight_file)
+        base_model = models.TriVec(model_weight_file)
     else:
         message = 'Invalid Model type choice: {0} (choose from {1})'.format(
             model_type, ["distmult", "complex"])
