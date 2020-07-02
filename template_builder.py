@@ -24,6 +24,8 @@ def template_obj_builder(dataset_root, model_weight_file, template_load_dir, tem
         base_model = models.TypedDM(model_weight_file)
     elif(model_type == "complex"):
         base_model = models.TypedComplex(model_weight_file)
+    elif(model_type == 'trivec'):
+        base_model = model.TriVec(model_weight_file)
     else:
         message = 'Invalid Model type choice: {0} (choose from {1})'.format(
             model_type, ["distmult", "complex"])
@@ -61,7 +63,7 @@ if __name__ == "__main__":
 
     parser.add_argument('-o', '--offset', default=0, type=int,
                         help='Build templates only for: [o*floor(N/p), (o+1)*floor(N/p))')
-    
+
     parser.add_argument('-p', '--parts', default=1, type=int,
                         help='The job is dividied into p parts. Run only for offset o')
 
