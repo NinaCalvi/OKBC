@@ -1,0 +1,16 @@
+#$ -cwd
+#$ -S /bin/bash
+#$ -o $HOME/template.out
+#$ -e $HOME/template.err
+#$ -t 1-2
+#$ -l tmem=5G
+#$ -l h_rt=6:00:00
+
+export LANG="en_US.utf8"
+export LANGUAGE="en_US:en"
+
+conda activate libkge_new
+
+cd ${HOME}/Dissertation/OKBC/
+
+test $SGE_TASK_ID -eq 1 && sleep 10 && PYTHONPATH=. python template_builder.py -d pse -m trivec -w /home/acalvi/Dissertation/dump_norm.pkl  -s logs/pse -v 1 --t_ids 1 2 3 4 5 6 --data_repo_root ./data
